@@ -1,13 +1,6 @@
 "use strict";
 
 module.exports = Franz => {
-  const contains = function (selector, text) {
-    const elements = document.querySelectorAll(selector);
-    return Array.prototype.filter.call(elements, function(element){
-      return RegExp(text).test(element.textContent);
-    });
-  }
-
   const getMessages = function getMessages() {
     let unread = 0;
 

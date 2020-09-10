@@ -1,0 +1,13 @@
+{
+  "id": "orderdesk",
+  "name": "Order Desk",
+  "version": "1.0.0",
+  "description": "Order Desk",
+  "main": "index.js",
+  "author": "Scott Carpenter <scott@payforstay.com>",
+  "license": "MIT",
+  "repository": "https://github.com/squatto/franz-recipe-orderdesk",
+  "config": {
+    "serviceURL": "https://app.orderdesk.me/dashboard"
+  }
+}

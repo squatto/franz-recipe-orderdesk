@@ -9,13 +9,15 @@ module.exports = Franz => {
     // e.g. https://app.orderdesk.me/orders?folder=123456 = 123456
     const folderId = 123456;
 
-    const countObject = document.getElementById(`folder_count_${folderId}`);
+    const countObject = document.getElementById(`folder_count_${folderId}`)
+      || document.getElementById(`folder_count_${folderId}_10K`);
 
     if (countObject !== undefined) {
       let countText = countObject.innerText.replace(',', '');
 
       if (countText.substr(-2).toUpperCase() === 'K+') {
-        countText = countText.substr(0, countText.length - 2) + '000';
+        // if the folder shows "10K+" orders then the actual total is in the "title" attribute
+        countText = countObject.getAttribute('title').replace(',', '');
       }
 
       unread = parseInt(countText, 10);

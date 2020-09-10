@@ -2,7 +2,7 @@
 
 This is an unofficial Franz/Ferdi recipe for [Order Desk](https://www.orderdesk.com/).
 
-The badge on the service icon will show the number of open orders.
+The badge on the service icon will show the number of open orders in a specific folder.
 Change the value of the `folderId` variable in `webview.js` to the ID of the folder
 in Order Desk that you want to show the open order count for.
 

@@ -1,6 +1,22 @@
 "use strict";
 
 module.exports = Franz => {
+  // number of seconds between calling the reload callback
+  // change this to -1 (or any number less than 0) to prevent the callback from ever running
+  let callReloadCallbackAfter = 120;
+
+  // change this to do whatever you want to run after the number of seconds have passed
+  // by default it clicks the "Dashboard" link in the nav menu
+  // to trigger a page reload so that the order total is updated on the service badge
+  // (Order Desk doesn't update the UI automatically so you have to reload the page)
+  const reloadCallback = () => {
+    try {
+      document.querySelector('#sidebar-menu > li > a').click();
+    } catch (e) {
+      // no biggie...
+    }
+  };
+
   const getMessages = function getMessages() {
     let unread = 0;
 
@@ -24,6 +40,20 @@ module.exports = Franz => {
     }
 
     Franz.setBadge(parseInt(unread, 10));
+
+    // should we call the reload callback?
+    if (callReloadCallbackAfter > 0) {
+      callReloadCallbackAfter -= 2; // Franz.loop() happens every 2 seconds
+
+      if (! (callReloadCallbackAfter % 15)) {
+        console.log(`Running the reload callback in ${callReloadCallbackAfter} seconds...`);
+      }
+
+      if (callReloadCallbackAfter <= 0) {
+        console.log('Running the reload callback');
+        reloadCallback();
+      }
+    }
   };
 
   Franz.loop(getMessages);

@@ -1,7 +1,7 @@
 {
   "id": "orderdesk",
   "name": "Order Desk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Order Desk",
   "main": "index.js",
   "author": "Scott Carpenter <scott@payforstay.com>",
